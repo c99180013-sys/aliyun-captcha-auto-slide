@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aliyun Captcha Demo (OSS Test)</title>
+<script src="https://o.alicdn.com/captcha-frontend/aliyunCaptcha/AliyunCaptcha.js"></script>
+<script>
+window.onload = function() {
+    document.getElementById('trigger').addEventListener('click', function() {
+        initAliyunCaptcha({
+            SceneId: 'xxxtest',
+            prefix: 'xxxtest',
+            mode: 'popup',
+            element: '#captcha-box',
+            button: '#trigger',
+            captchaVerifyCallback: function(p) {
+                console.log('captchaVerifyParam:', JSON.stringify(p));
+                return { captchaResult: true };
+            },
+            onBizResultCallback: function() {
+                console.log('onBizResultCallback called');
+            },
+            slideStyle: { width: 360, height: 40 },
+            language: 'cn',
+        });
+    });
+};
+</script>
+<style>
+body { font-family: "Microsoft YaHei", sans-serif; padding: 40px; }
+#trigger {
+    display: inline-block; padding: 12px 32px;
+    background: #1677ff; color: #fff; border: none;
+    border-radius: 6px; cursor: pointer; font-size: 16px;
+}
+#captcha-box { margin-top: 24px; min-height: 200px; }
+</style>
+</head>
+<body>
+<h2>Aliyun Captcha 1.0/2.0 OSS Test Demo</h2>
+<p>Click the button below to trigger the captcha popup:</p>
+<button id="trigger">Click to Verify</button>
+<div id="captcha-box"></div>
+</body>
+</html>
