@@ -31,8 +31,7 @@ from pathlib import Path
 from dotenv import load_dotenv
 from playwright.async_api import async_playwright
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
-from aliyun_captcha_oss import AliyunCaptchaSolver
+from solver import AliyunCaptchaSolver
 
 
 async def main():
